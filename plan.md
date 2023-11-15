@@ -57,9 +57,15 @@ function scramble(list) {
     // n is the amount of times the scramble loop will work
     // n is based off of how many terms there are, for a good amount of sorting
     let n = Math.floor(Math.random * (list.length + 1));
+    let i = 0;
 
     while(i < n) {
-        
+        // get a random number from the list
+        let random = Math.floor(Math.random * list.length);
+
+        // Code that scrambles the list
+
+        i++;
     }
 }
 ```
