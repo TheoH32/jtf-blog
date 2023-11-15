@@ -6,15 +6,18 @@ type: collab
 courses: { csa: {week: 0} }
 ---
 
-# Necessities
+# Problem
+- We have to make a mini project that also fills Mr. Mort's requirements
+- Also have fun project that we enjoy making
+
+## Necessities
 - Fibonacci Sequence
 - Sorting
 - Visualization
-- Inheritance
 
 # Ideas
 - Game?
-- Sorting Videos on yt
+- Sorting Videos Visualized
 
 # Plan
 ![gif](https://panthema.net/2013/sound-of-sorting/thumb.gif)
@@ -62,8 +65,11 @@ function scramble(list) {
     while(i < n) {
         // get a random number from the list
         let random = Math.floor(Math.random * list.length);
-
-        // Code that scrambles the list
+        let term = list[random];
+        // puts the term at the end
+        list.push(term);
+        // delete old term
+        delete list[random];
 
         i++;
     }
@@ -73,6 +79,7 @@ function scramble(list) {
 # Sorting
 - Then they choose a sort of there choosing
 - It will record the amount of time it takes to sort,
+- Will include, merge, selection, bubble, insertion
 
 # Backend Planning
 - Nothing that we can't already achieve
@@ -89,3 +96,11 @@ function scramble(list) {
 - String: sortName
 - Int: terms
 - Double: time
+
+## Methods Included our website
+- Post:
+    - Will send after each sort to the 
+- Read:
+    - Whenever you go to the leaderboard page
+- Update and Delete will be created, although not necessarily needed for the person, only for dev
+
