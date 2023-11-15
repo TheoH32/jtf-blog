@@ -1,5 +1,5 @@
 ---
-layout: base
+layout: post
 title: Mini Project Plan
 permalink: /plan
 type: collab
