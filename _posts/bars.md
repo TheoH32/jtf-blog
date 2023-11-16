@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: base
 title: Creating the css for the bars
 type: ccc
 courses: { csa: {week: 0} }
