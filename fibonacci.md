@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Creating the css for the bars
+title: Fibonacci Sequence
 type: ccc
 courses: { csa: {week: 0} }
 ---
