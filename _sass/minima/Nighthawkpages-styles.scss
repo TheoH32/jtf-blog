@@ -1,25 +1,6 @@
 //Default Overrides For Styles In Minima 
 // If you wish to override any of this CSS, do so in _sass/minima/custom-styles.css
 
-.sort-container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  height: auto;
-  background-color: #f0f0f0;
-}
-
-.bar {
-  width: 50px;
-  background-color: #3498db;
-  margin: 0 2px;
-  transition: height 0.175s ease-in;
-}
-
-.created {
-  padding-top: 20px;
-}
-
 .post img {
   display: block;
   // border:1px solid #021a40;
