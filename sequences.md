@@ -44,12 +44,6 @@ courses: { csa: {week: 0} }
   cursor: pointer;
 }
 
-.slidecontainer {
-    border: 1px solid #ccc;
-    justify-content: center;
-    text-align: center;
-}
-
 #manualValue {
     color: black;
 }
@@ -91,29 +85,75 @@ courses: { csa: {week: 0} }
   margin-bottom: 10px;
 }
 
+.timeDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+}
 
+.manual-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+}
+
+.manual-container label {
+  margin-right: 10px;
+}
+
+.slider-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+}
+
+.slidecontainer {
+    border: 1px solid #ccc;
+    justify-content: center;
+    text-align: center;
+}
 </style>
 
 <div class="slidecontainer">
-  <input type="range" min="100" max="1000" value="100" class="slider" id="inputRange">
-  <label for="manualValue">Manual Number:</label>
-  <br>
-  <input type="number" id="manualValue" min="100" max="1000">
-  <button onclick="setManualValue()">Set Value</button>
-  <br>
+  <div class="manual-container">
+    <!-- Manual Value -->
+    <div>
+      <label for="manualValue">Manual Number:</label>
+      <input type="number" id="manualValue" min="100" max="1000">
+      <button onclick="setManualValue()">Set Value</button>
+    </div>
+    <!-- Leaderboard -->
+    <button id="leaderButton" onclick="leaderboardPlay()">Leaderboard Testing</button>
+  </div>
+  <div class="slider-container">
+    <!-- Slider -->
+    <input type="range" min="100" max="1000" value="100" class="slider" id="inputRange">
+  </div>
+  <!-- Value -->
   <p>Value: <span id="shownNumber"></span></p>
-  <br>
-  <button id="leaderButton" onclick="leaderboardPlay()">Leaderboard Testing</button>
 </div>
 
 <div class="btn-group">
-  <button>Sequence</button>
+  <button >Sequence</button>
   <button>Sequence</button>
   <button>Sequence</button>
   <button>Sequence</button>
 </div>
 
+
+<div class="result div">
+  <h1 id="sortingTEXT">Sorting:</h1>
+  <h1 id="termTEXT">Terms:</h1>
+  <h1 id="timerTEXT">Time:</h1>
+</div>
+
 <script>
+
+const manualValueBool = new Boolean(false);
+
 var slider = document.getElementById("inputRange");
 var output = document.getElementById("shownNumber");
 var manualInput = document.getElementById("manualValue");
@@ -125,6 +165,8 @@ slider.oninput = function() {
 }
 
 function setManualValue() {
+  const leaderValueBool = true;
+  const manualValueBool = false;
   var value = parseInt(manualInput.value);
   if (value >= parseInt(slider.min) && value <= parseInt(slider.max)) {
     slider.value = value;
@@ -137,5 +179,7 @@ function setManualValue() {
 function leaderboardPlay() {
   slider.value = 500;
   output.innerHTML = slider.value;
+  const leaderValueBool = true;
+  const manualValueBool = false;
 }
 </script>
