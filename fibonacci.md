@@ -24,6 +24,7 @@ courses: { csa: {week: 0} }
         width: 30px;
         background-color: #3498db;
         margin: 0 2px;
+        transition: height 0.3s ease, background-color 0.3s ease;
     }
 
     .bar-value {

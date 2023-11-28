@@ -25,3 +25,17 @@
 // @import "minima/hamilton/skins/midnight";
 // @import "minima/hamilton/skins/sunrise";
 // @import "minima/hamilton/skins/sunset"
+
+input {
+    background-color: white !important;
+    color: black !important;
+}
+
+.btn-group button:hover {
+    background-color: #3e8e41 !important;
+}
+
+.btn-group {
+    justify-content: center !important;
+    align-items: center !important;
+}
