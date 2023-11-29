@@ -12,7 +12,42 @@ courses: { csa: {week: 0} }
 </div>
 
 <script>
-    function tester() {
+ const timeData = {
+                "time": 999998
+            };
+     function updateTime(sortName) {
+            console.log("updating time for: " + sortName);
+            const requestOptions = {
+                method: 'POST',
+                cache: 'no-cache',
+                credentials: 'include',
+                 headers: 
+                 {
+                "Content-Type": "application/json"
+                },
+                body: JSON.stringify(timeData)
+            };
+        
+            // Use the fetch function with the modified request options
+            fetch("http://localhost:8085/api/leaderboard/updatetime/" + sortName, requestOptions)
+                .then(response => {
+                    if (!response.ok) {
+                        throw Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+
+                    console.log(data); // Log the fetched data to the console
+
+                })
+                .catch(error => {
+                    console.error('Fetch error:', error);
+                });
+        }
+</script>
+<script>
+    function display() {
         const apiUrl = 'http://localhost:8085/api/leaderboard/';
         fetch(apiUrl)
             .then(response => {
@@ -43,6 +78,7 @@ courses: { csa: {week: 0} }
                         <p><b>time:</b> ${leaderboard.time}</p>
                     </div>
                     <div class="actions">
+                    <button onclick="updateTime('${leaderboard.sortName}')">change time</button>
                     </div>
                 </div>
             `;
@@ -52,7 +88,7 @@ courses: { csa: {week: 0} }
 
     document.addEventListener("DOMContentLoaded", function () {
         // Load initial leaderboard data
-        tester();
+        display();
     });
 </script>
 
