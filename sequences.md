@@ -152,48 +152,74 @@ courses: { csa: {week: 0} }
 
 <script>
 
-  const manualValueBool = new Boolean(false);
+const manualValueBool = new Boolean(false);
 
-  // const selectionClickBool = new Boolean(false);
-  // const mergeClickBool = new Boolean(false);
-  // const insertionClickBool = new Boolean(false);
-  // const bubbleClickBool = new Boolean(false);
+// const selectionClickBool = new Boolean(false);
+// const mergeClickBool = new Boolean(false);
+// const insertionClickBool = new Boolean(false);
+// const bubbleClickBool = new Boolean(false);
 
-  var slider = document.getElementById("inputRange");
-  var output = document.getElementById("shownNumber");
-  var manualInput = document.getElementById("manualValue");
-  var sortingText = document.getElementById("sortingTEXT");
-  var termsText = document.getElementById("termTEXT");
+var slider = document.getElementById("inputRange");
+var output = document.getElementById("shownNumber");
+var manualInput = document.getElementById("manualValue");
+var sortingText = document.getElementById("sortingTEXT");
+var termsText = document.getElementById("termTEXT");
 
-  slider.value = 100;
-  termsText.innerHTML = "Terms: " + slider.value;
+slider.value = 100;
+termsText.innerHTML = "Terms: " + slider.value;
+output.innerHTML = slider.value;
+
+
+slider.oninput = function() {
+  output.innerHTML = this.value;
+  termsText.innerHTML = "Terms: " + this.value;
+}
+
+function setManualValue() {
+  const leaderValueBool = true;
+  const manualValueBool = false;
+  var value = parseInt(manualInput.value);
+  if (value >= parseInt(slider.min) && value <= parseInt(slider.max)) {
+    slider.value = value;
+    output.innerHTML = value;
+    termsText.innerHTML = "Terms: " + value;
+  } else {
+    alert("Please enter a value within the allowed range.");
+  }
+}
+
+function leaderboardPlay() {
+  slider.value = 500;
   output.innerHTML = slider.value;
+  termsText.innerHTML = "Terms: " + slider.value;
+  const leaderValueBool = true;
+  const manualValueBool = false;
+}
+
+var selectionB = document.getElementById("selectionButton");
+var mergeB = document.getElementById("mergeButton");
+var insertionB = document.getElementById("insertionButton");
+var bubbleB = document.getElementById("bubbleButton");
 
 
-  slider.oninput = function() {
-    output.innerHTML = this.value;
-    termsText.innerHTML = "Terms: " + this.value;
-  }
+function selectionClick() {
+  resetButtonColors();
+  sortingText.innerHTML = "Sorting: Selection";
+}
 
-  function setManualValue() {
-    const leaderValueBool = true;
-    const manualValueBool = false;
-    var value = parseInt(manualInput.value);
-    if (value >= parseInt(slider.min) && value <= parseInt(slider.max)) {
-      slider.value = value;
-      output.innerHTML = value;
-      termsText.innerHTML = "Terms: " + value;
-    } else {
-      alert("Please enter a value within the allowed range.");
-    }
-  }
+function mergeClick() {
+  resetButtonColors();
+  sortingText.innerHTML = "Sorting: Merge";
+}
 
-  function leaderboardPlay() {
-    slider.value = 500;
-    output.innerHTML = slider.value;
-    termsText.innerHTML = "Terms: " + slider.value;
-    const leaderValueBool = true;
-    const manualValueBool = false;
-  }
+function insertionClick() {
+  resetButtonColors();
+  sortingText.innerHTML = "Sorting: Insertion";
+}
+
+function bubbleClick() {
+  resetButtonColors();
+  sortingText.innerHTML = "Sorting: Bubble";
+}
 
 </script>
