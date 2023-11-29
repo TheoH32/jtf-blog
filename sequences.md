@@ -137,10 +137,10 @@ courses: { csa: {week: 0} }
 </div>
 
 <div class="btn-group">
-  <button >Sequence</button>
-  <button>Sequence</button>
-  <button>Sequence</button>
-  <button>Sequence</button>
+  <button id="selectionButton" onclick="selectionClick()">Selection</button>
+  <button id="mergeButton" onclick="mergeClick()">Merge</button>
+  <button id="insertionButton" onclick="insertionClick()">Insertion</button>
+  <button id="bubbleButton" onclick="bubbleClick()">Bubble</button>
 </div>
 
 
@@ -152,34 +152,48 @@ courses: { csa: {week: 0} }
 
 <script>
 
-const manualValueBool = new Boolean(false);
+  const manualValueBool = new Boolean(false);
 
-var slider = document.getElementById("inputRange");
-var output = document.getElementById("shownNumber");
-var manualInput = document.getElementById("manualValue");
+  // const selectionClickBool = new Boolean(false);
+  // const mergeClickBool = new Boolean(false);
+  // const insertionClickBool = new Boolean(false);
+  // const bubbleClickBool = new Boolean(false);
 
-output.innerHTML = slider.value;
+  var slider = document.getElementById("inputRange");
+  var output = document.getElementById("shownNumber");
+  var manualInput = document.getElementById("manualValue");
+  var sortingText = document.getElementById("sortingTEXT");
+  var termsText = document.getElementById("termTEXT");
 
-slider.oninput = function() {
-  output.innerHTML = this.value;
-}
-
-function setManualValue() {
-  const leaderValueBool = true;
-  const manualValueBool = false;
-  var value = parseInt(manualInput.value);
-  if (value >= parseInt(slider.min) && value <= parseInt(slider.max)) {
-    slider.value = value;
-    output.innerHTML = value;
-  } else {
-    alert("Please enter a value within the allowed range.");
-  }
-}
-
-function leaderboardPlay() {
-  slider.value = 500;
+  slider.value = 100;
+  termsText.innerHTML = "Terms: " + slider.value;
   output.innerHTML = slider.value;
-  const leaderValueBool = true;
-  const manualValueBool = false;
-}
+
+
+  slider.oninput = function() {
+    output.innerHTML = this.value;
+    termsText.innerHTML = "Terms: " + this.value;
+  }
+
+  function setManualValue() {
+    const leaderValueBool = true;
+    const manualValueBool = false;
+    var value = parseInt(manualInput.value);
+    if (value >= parseInt(slider.min) && value <= parseInt(slider.max)) {
+      slider.value = value;
+      output.innerHTML = value;
+      termsText.innerHTML = "Terms: " + value;
+    } else {
+      alert("Please enter a value within the allowed range.");
+    }
+  }
+
+  function leaderboardPlay() {
+    slider.value = 500;
+    output.innerHTML = slider.value;
+    termsText.innerHTML = "Terms: " + slider.value;
+    const leaderValueBool = true;
+    const manualValueBool = false;
+  }
+
 </script>
