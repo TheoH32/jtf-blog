@@ -13,7 +13,7 @@ courses: { csa: {week: 0} }
 </div>
 <div class="input-group">
     <input type="int" id="terms"/>
-    <label for="terms" class="input-group__label">Skatepark Name</label>
+    <label for="terms" class="input-group__label">terms</label>
 </div>
 
 
