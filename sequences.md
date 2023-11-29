@@ -215,6 +215,7 @@ function main() {
     const j = Math.floor(Math.random() * (i + 1));
     [list[i], list[j]] = [list[j], list[i]];
   }
+  console.log(list);
   // Your existing main function logic...
 }
 function setManualValue() {
@@ -224,6 +225,7 @@ function setManualValue() {
   if (value >= parseInt(slider.min) && value <= parseInt(slider.max)) {
     slider.value = value;
     output.innerHTML = value;
+    termsText.innerHTML = "Terms: " + value;
   } else {
     alert("Please enter a value within the allowed range.");
   }
@@ -231,6 +233,7 @@ function setManualValue() {
 function leaderboardPlay() {
   slider.value = 1000;
   output.innerHTML = slider.value;
+  termsText.innerHTML = "Terms: " + slider.value;
   const leaderValueBool = true;
   const manualValueBool = false;
 }
