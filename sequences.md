@@ -203,22 +203,18 @@ var bubbleB = document.getElementById("bubbleButton");
 
 
 function selectionClick() {
-  resetButtonColors();
   sortingText.innerHTML = "Sorting: Selection";
 }
 
 function mergeClick() {
-  resetButtonColors();
   sortingText.innerHTML = "Sorting: Merge";
 }
 
 function insertionClick() {
-  resetButtonColors();
   sortingText.innerHTML = "Sorting: Insertion";
 }
 
 function bubbleClick() {
-  resetButtonColors();
   sortingText.innerHTML = "Sorting: Bubble";
 }
 
