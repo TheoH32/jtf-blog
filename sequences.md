@@ -131,7 +131,7 @@ courses: { csa: {week: 0} }
   </div>
   <div class="slider-container">
     <!-- Slider -->
-    <input type="range" min="100" max="10000" value="100" class="slider" id="inputRange">
+    <input type="range" min="100" max="10000  " value="100" class="slider" id="inputRange">
   </div>
   <!-- Value -->
   <p>Value: <span id="shownNumber"></span></p>

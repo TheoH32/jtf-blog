@@ -71,11 +71,14 @@ function main() {
     
     // Checking which sort was chosen
     if (Insertion) {
-        return
+        time = InsertionSortTime(list);
+        console.log(time);
     } else if (Merge) {
-        return
+        time = MergeSortTime(list);
+        console.log(time);
     } else if (Bubble) {
-        return
+        time = BubbleSortTime(list);
+        console.log(time);
     } else if (Selection) {
         time = selectSortTime(list);
         console.log(time);
@@ -139,6 +142,113 @@ function selectSortTime(arr) {
     // Print the sorted array
     console.log("Sorted Array:", arr);
   
+    // Return the elapsed time
+    return elapsedTime;
+}
+
+function MergeSortTime(arr) {
+    // Record the start time
+    const startTime = Date.now();
+
+    // Merge sort implementation
+    mergeSort(arr);
+
+    // Record the end time
+    const elapsedTime = Date.now() - startTime;
+
+    // Print the sorted array
+    console.log("Sorted Array:", arr);
+
+    // Return the elapsed time
+    return elapsedTime;
+
+    function mergeSort(arr) {
+        if (arr.length <= 1) {
+            return arr;
+        }
+
+        const mid = Math.floor(arr.length / 2);
+        const left = arr.slice(0, mid);
+        const right = arr.slice(mid);
+
+        mergeSort(left);
+        mergeSort(right);
+
+        merge(arr, left, right);
+    }
+
+    function merge(arr, left, right) {
+        let i = 0;
+        let j = 0;
+        let k = 0;
+
+        while (i < left.length && j < right.length) {
+            if (left[i] < right[j]) {
+                arr[k++] = left[i++];
+            } else {
+                arr[k++] = right[j++];
+            }
+        }
+
+        while (i < left.length) {
+            arr[k++] = left[i++];
+        }
+
+        while (j < right.length) {
+            arr[k++] = right[j++];
+        }
+    }
+}
+
+function BubbleSortTime(arr) {
+    // Record the start time
+    const startTime = Date.now();
+
+    // Bubble sort implementation
+    for (let i = 0; i < arr.length - 1; i++) {
+        for (let j = 0; j < arr.length - 1 - i; j++) {
+            if (arr[j] > arr[j + 1]) {
+                // Swap elements
+                const temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+
+    // Record the end time
+    const elapsedTime = Date.now() - startTime;
+
+    // Print the sorted array
+    console.log("Sorted Array:", arr);
+
+    // Return the elapsed time
+    return elapsedTime;
+}
+
+function InsertionSortTime(arr) {
+    // Record the start time
+    const startTime = Date.now();
+
+    // Insertion sort implementation
+    for (let i = 1; i < arr.length; i++) {
+        let currentVal = arr[i];
+        let j = i - 1;
+
+        while (j >= 0 && arr[j] > currentVal) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+
+        arr[j + 1] = currentVal;
+    }
+
+    // Record the end time
+    const elapsedTime = Date.now() - startTime;
+
+    // Print the sorted array
+    console.log("Sorted Array:", arr);
+
     // Return the elapsed time
     return elapsedTime;
 }
