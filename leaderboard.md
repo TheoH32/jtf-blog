@@ -7,16 +7,31 @@ courses: { csa: {week: 0} }
 
 <html>
 
+<div class="input-group">
+    <input type="double" id="time"/>
+    <label for="time" class="input-group__label">time</label>
+</div>
+<div class="input-group">
+    <input type="int" id="terms"/>
+    <label for="terms" class="input-group__label">terms</label>
+</div>
+
+
+
 <div id="sort-cards" class="scroll-container">
     <!-- Cards will be dynamically added here -->
 </div>
 
 <script>
- const timeData = {
-                "time": 999998
-            };
+const terms = document.getElementById('terms').value;
+
      function updateTime(sortName) {
-            console.log("updating time for: " + sortName);
+        const time = document.getElementById('time').value;
+        const sortData = {
+        "time": time,
+        "terms": ""
+    };
+    console.log("updating time for: " + sortName);
             const requestOptions = {
                 method: 'POST',
                 cache: 'no-cache',
@@ -25,7 +40,7 @@ courses: { csa: {week: 0} }
                  {
                 "Content-Type": "application/json"
                 },
-                body: JSON.stringify(timeData)
+                body: JSON.stringify(sortData)
             };
         
             // Use the fetch function with the modified request options
@@ -45,6 +60,44 @@ courses: { csa: {week: 0} }
                     console.error('Fetch error:', error);
                 });
         }
+
+
+function updateTerms(sortName) {
+    const terms = document.getElementById('terms').value;
+    const sortData = {
+        "time": "",
+        "terms": terms
+    };
+            console.log("updating terms for: " + sortName);
+            const requestOptions = {
+                method: 'POST',
+                cache: 'no-cache',
+                credentials: 'include',
+                 headers: 
+                 {
+                "Content-Type": "application/json"
+                },
+                body: JSON.stringify(sortData)
+            };
+        
+            // Use the fetch function with the modified request options
+            fetch("http://localhost:8085/api/leaderboard/updateterms/" + sortName, requestOptions)
+                .then(response => {
+                    if (!response.ok) {
+                        throw Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+
+                    console.log(data); // Log the fetched data to the console
+
+                })
+                .catch(error => {
+                    console.error('Fetch error:', error);
+                });
+        }
+
 </script>
 <script>
     function display() {
@@ -79,6 +132,7 @@ courses: { csa: {week: 0} }
                     </div>
                     <div class="actions">
                     <button onclick="updateTime('${leaderboard.sortName}')">change time</button>
+                    <button onclick="updateTerms('${leaderboard.sortName}')">change terms</button>
                     </div>
                 </div>
             `;
@@ -91,6 +145,8 @@ courses: { csa: {week: 0} }
         display();
     });
 </script>
+
+
 
 
 </html>
