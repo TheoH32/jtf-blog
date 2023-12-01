@@ -1,9 +1,13 @@
 ---
 layout: post
-title: leaderboard display
+title: leaderboard display 
 type: ccc
 courses: { csa: {week: 0} }
 ---
+
+## a display for all different sorts, running at 10000 terms. 
+
+# NOTE: displays recent times
 
 <html>
 
@@ -128,11 +132,11 @@ function updateTerms(sortName) {
                     <div class="info">
                         <h3>${leaderboard.sortName}</h3>
                         <p><b>terms:</b> ${leaderboard.terms}</p>
-                        <p><b>time:</b> ${leaderboard.time}</p>
+                        <p><b>time:</b> ${leaderboard.time} ms</p>
                     </div>
                     <div class="actions">
-                    <button onclick="updateTime('${leaderboard.sortName}')">change time</button>
-                    <button onclick="updateTerms('${leaderboard.sortName}')">change terms</button>
+                     <button onclick="updateTime('${leaderboard.sortName}')">change time</button>
+                     <button onclick="updateTerms('${leaderboard.sortName}')">change terms</button>
                     </div>
                 </div>
             `;
