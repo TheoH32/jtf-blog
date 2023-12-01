@@ -4,15 +4,43 @@ var slider = document.getElementById("inputRange");
 var output = document.getElementById("shownNumber");
 var manualInput = document.getElementById("manualValue");
 
+var sortingText = document.getElementById("sortingTEXT");
+var termsText = document.getElementById("termsTEXT");
+var timeText = document.getElementById("timerTEXT");
+
+var selectionB = document.getElementById("selectionButton");
+var mergeB = document.getElementById("mergeButton");
+var insertionB = document.getElementById("insertionButton");
+var bubbleB = document.getElementById("bubbleButton");
+
+
+function selectionClick() {
+    sortingText.innerHTML = "Sorting: Selection";
+}
+
+function mergeClick() {
+    sortingText.innerHTML = "Sorting: Merge";
+}
+
+function insertionClick() {
+    sortingText.innerHTML = "Sorting: Insertion";
+}
+
+function bubbleClick() {
+    sortingText.innerHTML = "Sorting: Bubble";
+}
+
 // Boolean values for sorting algorithms
 var Insertion = false;
 var Merge = false;
 var Bubble = false;
 var Selection = false;
+termsText.innerHTML = "Terms: " + 100;
 
 output.innerHTML = slider.value;
 slider.oninput = function () {
     output.innerHTML = this.value;
+    termsText.innerHTML = "Terms: " + this.value;
 }
 
 // Function to handle button selection
@@ -85,6 +113,11 @@ function main() {
     }
 
     // Justin where to put your fetch code
+    if (list.length == 10000) {
+        //FETCH CODE HERE
+        console.log("LEADERBOARD FETCH TRUE");
+    }
+
 
 
 
@@ -105,6 +138,8 @@ function setManualValue() {
 function leaderboardPlay() {
     slider.value = 10000;
     output.innerHTML = slider.value;
+    termsText.innerHTML = "Terms: " + 10000;
+
 }
 
 function createArray() {
@@ -119,30 +154,31 @@ function createArray() {
 function selectSortTime(arr) {
     // Record the start time
     const startTime = Date.now();
-  
+
     // Selection sort implementation
     for (let i = 0; i < arr.length - 1; i++) {
-      let minIndex = i;
-      for (let j = i + 1; j < arr.length; j++) {
+        let minIndex = i;
+        for (let j = i + 1; j < arr.length; j++) {
         if (arr[j] < arr[minIndex]) {
-          minIndex = j;
+            minIndex = j;
         }
-      }
-      if (minIndex !== i) {
+    }
+    if (minIndex !== i) {
         // Swap elements
         const temp = arr[i];
         arr[i] = arr[minIndex];
         arr[minIndex] = temp;
-      }
     }
-  
+    }
+
     // Record the end time
     const elapsedTime = Date.now() - startTime;
-  
+
     // Print the sorted array
     console.log("Sorted Array:", arr);
-  
+
     // Return the elapsed time
+    timeText.innerHTML = "Time: " + elapsedTime + "ms";
     return elapsedTime;
 }
 
@@ -160,6 +196,7 @@ function MergeSortTime(arr) {
     console.log("Sorted Array:", arr);
 
     // Return the elapsed time
+    timeText.innerHTML = "Time: " + elapsedTime + "ms";
     return elapsedTime;
 
     function mergeSort(arr) {
@@ -223,6 +260,7 @@ function BubbleSortTime(arr) {
     console.log("Sorted Array:", arr);
 
     // Return the elapsed time
+    timeText.innerHTML = "Time: " + elapsedTime + "ms";
     return elapsedTime;
 }
 
@@ -250,5 +288,6 @@ function InsertionSortTime(arr) {
     console.log("Sorted Array:", arr);
 
     // Return the elapsed time
+    timeText.innerHTML = "Time: " + elapsedTime + "ms";
     return elapsedTime;
 }

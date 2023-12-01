@@ -131,17 +131,17 @@ courses: { csa: {week: 0} }
   </div>
   <div class="slider-container">
     <!-- Slider -->
-    <input type="range" min="100" max="10000  " value="100" class="slider" id="inputRange">
+    <input type="range" min="100" max="10000" value="100" class="slider" id="inputRange">
   </div>
   <!-- Value -->
   <p>Value: <span id="shownNumber"></span></p>
 </div>
 
 <div id="sorts" class="btn-group">
-  <button id="Insertion">Insertion</button>
-  <button id="Merge">Merge</button>
-  <button id="Bubble">Bubble</button>
-  <button id="Selection">Selection</button>
+  <button id="Insertion" onclick="insertionClick()">Insertion</button>
+  <button id="Merge" onclick="mergeClick()">Merge</button>
+  <button id="Bubble" onclick="bubbleClick()">Bubble</button>
+  <button id="Selection" onclick="selectionClick()">Selection</button>
 </div>
 
 <div class="btn-group">
@@ -151,7 +151,7 @@ courses: { csa: {week: 0} }
 
 <div class="result div">
   <h1 id="sortingTEXT">Sorting:</h1>
-  <h1 id="termTEXT">Terms:</h1>
+  <h1 id="termsTEXT">Terms:</h1>
   <h1 id="timerTEXT">Time:</h1>
 </div>
 <script src="{{site.baseurl}}/assets/js/sequences.js"></script>
