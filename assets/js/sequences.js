@@ -15,19 +15,19 @@ var bubbleB = document.getElementById("bubbleButton");
 
 
 function selectionClick() {
-    sortingText.innerHTML = "Sorting: Selection";
+    sortingText.innerHTML = "Selection";
 }
 
 function mergeClick() {
-    sortingText.innerHTML = "Sorting: Merge";
+    sortingText.innerHTML = "Merge";
 }
 
 function insertionClick() {
-    sortingText.innerHTML = "Sorting: Insertion";
+    sortingText.innerHTML = "Insertion";
 }
 
 function bubbleClick() {
-    sortingText.innerHTML = "Sorting: Bubble";
+    sortingText.innerHTML = "Bubble";
 }
 
 // Boolean values for sorting algorithms
@@ -35,12 +35,12 @@ var Insertion = false;
 var Merge = false;
 var Bubble = false;
 var Selection = false;
-termsText.innerHTML = "Terms: " + 100;
+termsText.innerHTML = 100;
 
 output.innerHTML = slider.value;
 slider.oninput = function () {
     output.innerHTML = this.value;
-    termsText.innerHTML = "Terms: " + this.value;
+    termsText.innerHTML = this.value;
 }
 
 // Function to handle button selection
@@ -129,7 +129,7 @@ function setManualValue() {
     if (value >= parseInt(slider.min) && value <= parseInt(slider.max)) {
         slider.value = value;
         output.innerHTML = value;
-        termsText.innerHTML = "Terms: " + value;
+        termsText.innerHTML = value;
     } else {
         alert("Please enter a value within the allowed range.");
     }
@@ -138,7 +138,7 @@ function setManualValue() {
 function leaderboardPlay() {
     slider.value = 10000;
     output.innerHTML = slider.value;
-    termsText.innerHTML = "Terms: " + 10000;
+    termsText.innerHTML = 10000;
 
 }
 
@@ -178,7 +178,7 @@ function selectSortTime(arr) {
     console.log("Sorted Array:", arr);
 
     // Return the elapsed time
-    timeText.innerHTML = "Time: " + elapsedTime + "ms";
+    timeText.innerHTML = elapsedTime + "ms";
     return elapsedTime;
 }
 
@@ -196,7 +196,7 @@ function MergeSortTime(arr) {
     console.log("Sorted Array:", arr);
 
     // Return the elapsed time
-    timeText.innerHTML = "Time: " + elapsedTime + "ms";
+    timeText.innerHTML = elapsedTime + "ms";
     return elapsedTime;
 
     function mergeSort(arr) {
@@ -260,7 +260,7 @@ function BubbleSortTime(arr) {
     console.log("Sorted Array:", arr);
 
     // Return the elapsed time
-    timeText.innerHTML = "Time: " + elapsedTime + "ms";
+    timeText.innerHTML = elapsedTime + "ms";
     return elapsedTime;
 }
 
@@ -288,6 +288,6 @@ function InsertionSortTime(arr) {
     console.log("Sorted Array:", arr);
 
     // Return the elapsed time
-    timeText.innerHTML = "Time: " + elapsedTime + "ms";
+    timeText.innerHTML = elapsedTime + "ms";
     return elapsedTime;
 }
