@@ -167,6 +167,7 @@ function updateTerms(sortName) {
                 });
 }
 
+
 function main() {
     let list = createArray();
     let time;
@@ -176,65 +177,66 @@ function main() {
         [list[i], list[j]] = [list[j], list[i]];
     }
     console.log(list);
-    
+
     // Checking which sort was chosen
     if (Insertion) {
         time = InsertionSortTime(list);
         console.log(time);
         if (list.length == 10000) {
-            updateTime("insertion");
+            updateTime("insertion", time);
+        }
     } else if (Merge) {
         time = MergeSortTime(list);
         console.log(time);
         if (list.length == 10000) {
-            updateTime("merge");}
+            updateTime("merge", time);
+        }
     } else if (Bubble) {
         time = BubbleSortTime(list);
         console.log(time);
         if (list.length == 10000) {
-            updateTime("bubble sort");}
+            updateTime("bubble sort", time);
+        }
     } else if (Selection) {
         time = selectSortTime(list);
         console.log(time);
         if (list.length == 10000) {
-            updateTime("selection");}
+            updateTime("selection", time);
+        }
     }
+}
 
-
-    function updateTime(sortName) {
-        const sortData = {
+function updateTime(sortName, time) {
+    const sortData = {
         "time": time,
         "terms": ""
     };
-    console.log("updating time for: " + time);
-            const requestOptions = {
-                method: 'POST',
-                cache: 'no-cache',
-                credentials: 'include',
-                 headers: 
-                 {
-                "Content-Type": "application/json"
-                },
-                body: JSON.stringify(sortData)
-            };
-            // Use the fetch function with the modified request options
-            fetch("http://localhost:8085/api/leaderboard/updatetime/" + sortName, requestOptions)
-                .then(response => {
-                    if (!response.ok) {
-                        throw Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-
-                    console.log(data); // Log the fetched data to the console
-
-                })
-                .catch(error => {
-                    console.error('Fetch error:', error);
-                });
-        }
+    console.log("updating time for: " + sortName);
+    const requestOptions = {
+        method: 'POST',
+        cache: 'no-cache',
+        credentials: 'include',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(sortData)
+    };
+    // Use the fetch function with the modified request options
+    fetch("http://localhost:8085/api/leaderboard/updatetime/" + sortName, requestOptions)
+        .then(response => {
+            if (!response.ok) {
+                throw Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data); // Log the fetched data to the console
+        })
+        .catch(error => {
+            console.error('Fetch error:', error);
+        });
 }
+
 
 function createArray() {
     let n = slider.value;
@@ -384,4 +386,4 @@ function InsertionSortTime(arr) {
     // Return the elapsed time
     timeText.innerHTML = elapsedTime + "ms";
     return elapsedTime;
-} }
+}

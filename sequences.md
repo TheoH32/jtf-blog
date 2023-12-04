@@ -200,10 +200,10 @@ courses: { csa: {week: 0} }
 </div>
 
 <div id="sorts" class="btn-group">
-  <button id="Insertion" onclick="insertionClick()">Insertion</button>
-  <button id="Merge" onclick="mergeClick()">Merge</button>
   <button id="Bubble" onclick="bubbleClick()">Bubble</button>
   <button id="Selection" onclick="selectionClick()">Selection</button>
+  <button id="Insertion" onclick="insertionClick()">Insertion</button>
+  <button id="Merge" onclick="mergeClick()">Merge</button>
 </div>
 
 <div class="btn-group-2">
