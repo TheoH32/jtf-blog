@@ -30,6 +30,23 @@ function bubbleClick() {
     sortingText.innerHTML = "Bubble";
 }
 
+function leaderboardPlay() {
+    slider.value = 10000;
+    output.innerHTML = slider.value;
+    termsText.innerHTML = 10000;
+}
+
+function setManualValue() {
+    var value = parseInt(manualInput.value);
+    if (value >= parseInt(slider.min) && value <= parseInt(slider.max)) {
+        slider.value = value;
+        output.innerHTML = value;
+        termsText.innerHTML = value;
+    } else {
+        alert("Please enter a value within the allowed range.");
+    }
+}
+
 // Boolean values for sorting algorithms
 var Insertion = false;
 var Merge = false;
@@ -87,6 +104,69 @@ document.getElementById("Merge").addEventListener("click", function () { btnSele
 document.getElementById("Bubble").addEventListener("click", function () { btnSelect("B"); });
 document.getElementById("Selection").addEventListener("click", function () { btnSelect("S"); });
 
+function getTime(sortName) {
+    const requestOptions = {
+        method: 'GET',
+        cache: 'no-cache',
+        credentials: 'include',
+        headers:
+        {
+        "Content-Type": "application/json"
+        },
+    };
+    // Use the fetch function with the modified request options
+    fetch("http://localhost:8085/api/leaderboard/timefetch/" + sortName, requestOptions)
+       .then(response => {
+            if (!response.ok) {
+                throw Error('Network response was not ok');
+            }
+            return response.json();
+        })
+       .then(data => {
+            console.log(data);
+            oldTime = data.time;
+            return data;
+        })
+       .catch(error => {
+            console.log('There has been a problem with your fetch operation: ', error.message);
+        });
+}
+
+function updateTerms(sortName) {
+    const sortData = {
+        "time": "",
+        "terms": terms
+    };
+            console.log("updating terms for: " + sortName);
+            const requestOptions = {
+                method: 'POST',
+                cache: 'no-cache',
+                credentials: 'include',
+                 headers: 
+                 {
+                "Content-Type": "application/json"
+                },
+                body: JSON.stringify(sortData)
+            };
+        
+            // Use the fetch function with the modified request options
+            fetch("http://localhost:8085/api/leaderboard/updateterms/" + sortName, requestOptions)
+                .then(response => {
+                    if (!response.ok) {
+                        throw Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+
+                    console.log(data); // Log the fetched data to the console
+
+                })
+                .catch(error => {
+                    console.error('Fetch error:', error);
+                });
+}
+
 function main() {
     let list = createArray();
     let time;
@@ -102,52 +182,22 @@ function main() {
         time = InsertionSortTime(list);
         console.log(time);
         if (list.length == 10000) {
-        updateTime("insertion");
+            updateTime("insertion");
     } else if (Merge) {
         time = MergeSortTime(list);
         console.log(time);
         if (list.length == 10000) {
-        updateTime("merge");}
+            updateTime("merge");}
     } else if (Bubble) {
         time = BubbleSortTime(list);
         console.log(time);
         if (list.length == 10000) {
-        updateTime("bubble sort");}
+            updateTime("bubble sort");}
     } else if (Selection) {
         time = selectSortTime(list);
         console.log(time);
         if (list.length == 10000) {
-        updateTime("selection");}
-    }
-
-
-
-    function getTime(sortName) {
-        const requestOptions = {
-            method: 'GET',
-            cache: 'no-cache',
-            credentials: 'include',
-            headers:
-            {
-            "Content-Type": "application/json"
-            },
-        };
-        // Use the fetch function with the modified request options
-        fetch("http://localhost:8085/api/leaderboard/timefetch/" + sortName, requestOptions)
-           .then(response => {
-                if (!response.ok) {
-                    throw Error('Network response was not ok');
-                }
-                return response.json();
-            })
-           .then(data => {
-                console.log(data);
-                oldTime = data.time;
-                return data;
-            })
-           .catch(error => {
-                console.log('There has been a problem with your fetch operation: ', error.message);
-            });
+            updateTime("selection");}
     }
 
 
@@ -184,60 +234,6 @@ function main() {
                     console.error('Fetch error:', error);
                 });
         }
-}
-
-function updateTerms(sortName) {
-    const sortData = {
-        "time": "",
-        "terms": terms
-    };
-            console.log("updating terms for: " + sortName);
-            const requestOptions = {
-                method: 'POST',
-                cache: 'no-cache',
-                credentials: 'include',
-                 headers: 
-                 {
-                "Content-Type": "application/json"
-                },
-                body: JSON.stringify(sortData)
-            };
-        
-            // Use the fetch function with the modified request options
-            fetch("http://localhost:8085/api/leaderboard/updateterms/" + sortName, requestOptions)
-                .then(response => {
-                    if (!response.ok) {
-                        throw Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-
-                    console.log(data); // Log the fetched data to the console
-
-                })
-                .catch(error => {
-                    console.error('Fetch error:', error);
-                });
-        }
-
-
-function setManualValue() {
-    var value = parseInt(manualInput.value);
-    if (value >= parseInt(slider.min) && value <= parseInt(slider.max)) {
-        slider.value = value;
-        output.innerHTML = value;
-        termsText.innerHTML = value;
-    } else {
-        alert("Please enter a value within the allowed range.");
-    }
-}
-
-function leaderboardPlay() {
-    slider.value = 10000;
-    output.innerHTML = slider.value;
-    termsText.innerHTML = 10000;
-
 }
 
 function createArray() {
