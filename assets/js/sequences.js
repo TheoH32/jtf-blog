@@ -101,28 +101,126 @@ function main() {
     if (Insertion) {
         time = InsertionSortTime(list);
         console.log(time);
+        if (list.length == 10000) {
+        updateTime("insertion");
     } else if (Merge) {
         time = MergeSortTime(list);
         console.log(time);
+        if (list.length == 10000) {
+        updateTime("merge");}
     } else if (Bubble) {
         time = BubbleSortTime(list);
         console.log(time);
+        if (list.length == 10000) {
+        updateTime("bubble sort");}
     } else if (Selection) {
         time = selectSortTime(list);
         console.log(time);
-    }
-
-    // Justin where to put your fetch code
-    if (list.length == 10000) {
-        //FETCH CODE HERE
-        console.log("LEADERBOARD FETCH TRUE");
+        if (list.length == 10000) {
+        updateTime("selection");}
     }
 
 
 
+    function getTime(sortName) {
+        const requestOptions = {
+            method: 'GET',
+            cache: 'no-cache',
+            credentials: 'include',
+            headers:
+            {
+            "Content-Type": "application/json"
+            },
+        };
+        // Use the fetch function with the modified request options
+        fetch("http://localhost:8085/api/leaderboard/timefetch/" + sortName, requestOptions)
+           .then(response => {
+                if (!response.ok) {
+                    throw Error('Network response was not ok');
+                }
+                return response.json();
+            })
+           .then(data => {
+                console.log(data);
+                oldTime = data.time;
+                return data;
+            })
+           .catch(error => {
+                console.log('There has been a problem with your fetch operation: ', error.message);
+            });
+    }
 
 
+    function updateTime(sortName) {
+        const sortData = {
+        "time": time,
+        "terms": ""
+    };
+    console.log("updating time for: " + time);
+            const requestOptions = {
+                method: 'POST',
+                cache: 'no-cache',
+                credentials: 'include',
+                 headers: 
+                 {
+                "Content-Type": "application/json"
+                },
+                body: JSON.stringify(sortData)
+            };
+            // Use the fetch function with the modified request options
+            fetch("http://localhost:8085/api/leaderboard/updatetime/" + sortName, requestOptions)
+                .then(response => {
+                    if (!response.ok) {
+                        throw Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+
+                    console.log(data); // Log the fetched data to the console
+
+                })
+                .catch(error => {
+                    console.error('Fetch error:', error);
+                });
+        }
 }
+
+function updateTerms(sortName) {
+    const sortData = {
+        "time": "",
+        "terms": terms
+    };
+            console.log("updating terms for: " + sortName);
+            const requestOptions = {
+                method: 'POST',
+                cache: 'no-cache',
+                credentials: 'include',
+                 headers: 
+                 {
+                "Content-Type": "application/json"
+                },
+                body: JSON.stringify(sortData)
+            };
+        
+            // Use the fetch function with the modified request options
+            fetch("http://localhost:8085/api/leaderboard/updateterms/" + sortName, requestOptions)
+                .then(response => {
+                    if (!response.ok) {
+                        throw Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+
+                    console.log(data); // Log the fetched data to the console
+
+                })
+                .catch(error => {
+                    console.error('Fetch error:', error);
+                });
+        }
+
 
 function setManualValue() {
     var value = parseInt(manualInput.value);
@@ -290,4 +388,4 @@ function InsertionSortTime(arr) {
     // Return the elapsed time
     timeText.innerHTML = elapsedTime + "ms";
     return elapsedTime;
-}
+} }

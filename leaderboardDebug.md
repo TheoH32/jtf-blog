@@ -1,15 +1,22 @@
 ---
 layout: post
-title: leaderboard display 
+title: to be added
 type: ccc
 courses: { csa: {week: 0} }
 ---
 
-## a display for all different sorts, running at 10000 terms. 
-
-# NOTE: displays recent times
-
 <html>
+
+<div class="input-group">
+    <input type="double" id="time"/>
+    <label for="time" class="input-group__label">time</label>
+</div>
+<div class="input-group">
+    <input type="int" id="terms"/>
+    <label for="terms" class="input-group__label">terms</label>
+</div>
+
+
 
 <div id="sort-cards" class="scroll-container">
     <!-- Cards will be dynamically added here -->
@@ -124,7 +131,8 @@ function updateTerms(sortName) {
                         <p><b>time:</b> ${leaderboard.time} ms</p>
                     </div>
                     <div class="actions">
-
+                     <button onclick="updateTime('${leaderboard.sortName}')">change time</button>
+                     <button onclick="updateTerms('${leaderboard.sortName}')">change terms</button>
                     </div>
                 </div>
             `;
