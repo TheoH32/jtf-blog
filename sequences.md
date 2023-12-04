@@ -228,3 +228,15 @@ courses: { csa: {week: 0} }
   </tbody>
 </table>
 <script src="{{site.baseurl}}/assets/js/sequences.js"></script>
+
+## leaderboard for different sorts, running at 10000 terms. 
+
+## NOTE: displays recent times and updates every 5 seconds
+
+<div id="sort-cards" class="scroll-container">
+    <!-- Cards will be dynamically added here -->
+</div>
+
+
+
+<script src="{{site.baseurl}}/assets/js/leaderboard.js"></script>
