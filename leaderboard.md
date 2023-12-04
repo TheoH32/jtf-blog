@@ -1,6 +1,6 @@
 ---
 layout: post
-title: leaderboard display 
+title: Leaderboard Display
 type: ccc
 courses: { csa: {week: 0} }
 ---
