@@ -126,46 +126,14 @@ function getTime(sortName) {
             console.log(data);
             oldTime = data.time;
             return data;
+            return oldTime;
         })
        .catch(error => {
             console.log('There has been a problem with your fetch operation: ', error.message);
         });
 }
 
-function updateTerms(sortName) {
-    const sortData = {
-        "time": "",
-        "terms": terms
-    };
-            console.log("updating terms for: " + sortName);
-            const requestOptions = {
-                method: 'POST',
-                cache: 'no-cache',
-                credentials: 'include',
-                 headers: 
-                 {
-                "Content-Type": "application/json"
-                },
-                body: JSON.stringify(sortData)
-            };
-        
-            // Use the fetch function with the modified request options
-            fetch("http://localhost:8085/api/leaderboard/updateterms/" + sortName, requestOptions)
-                .then(response => {
-                    if (!response.ok) {
-                        throw Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
 
-                    console.log(data); // Log the fetched data to the console
-
-                })
-                .catch(error => {
-                    console.error('Fetch error:', error);
-                });
-}
 
 
 function main() {
@@ -211,6 +179,7 @@ function updateTime(sortName, time) {
         "time": time,
         "terms": ""
     };
+    //if sortData[time] > oldTime {
     console.log("updating time for: " + sortName);
     const requestOptions = {
         method: 'POST',
@@ -235,7 +204,7 @@ function updateTime(sortName, time) {
         .catch(error => {
             console.error('Fetch error:', error);
         });
-}
+} 
 
 
 function createArray() {
@@ -386,4 +355,40 @@ function InsertionSortTime(arr) {
     // Return the elapsed time
     timeText.innerHTML = elapsedTime + "ms";
     return elapsedTime;
+}
+
+
+function updateTerms(sortName) {
+    const sortData = {
+        "time": "",
+        "terms": terms
+    };
+            console.log("updating terms for: " + sortName);
+            const requestOptions = {
+                method: 'POST',
+                cache: 'no-cache',
+                credentials: 'include',
+                 headers: 
+                 {
+                "Content-Type": "application/json"
+                },
+                body: JSON.stringify(sortData)
+            };
+        
+            // Use the fetch function with the modified request options
+            fetch("http://localhost:8085/api/leaderboard/updateterms/" + sortName, requestOptions)
+                .then(response => {
+                    if (!response.ok) {
+                        throw Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+
+                    console.log(data); // Log the fetched data to the console
+
+                })
+                .catch(error => {
+                    console.error('Fetch error:', error);
+                });
 }
