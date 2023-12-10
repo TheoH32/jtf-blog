@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,WAAY;EACR,kCAAkC;EAClC,MAAM,EAAE,cAAc;EACtB,OAAO,EAAE,IAAI;EACb,MAAM,EAAE,IAAI;EACZ,+BAA+B;EAS/B,kDAAkD;EAPlD,iBAAM;IACF,+CAA+C;IAC/C,aAAa,EAAE,IAAI;IACnB,OAAO,EAAE,IAAI;IACb,MAAM,EAAE,cAAc",
+"sources": ["sequences.scss"],
+"names": [],
+"file": "sequences.css"
+}
