@@ -104,70 +104,6 @@ document.getElementById("Merge").addEventListener("click", function () { btnSele
 document.getElementById("Bubble").addEventListener("click", function () { btnSelect("B"); });
 document.getElementById("Selection").addEventListener("click", function () { btnSelect("S"); });
 
-function getTime(sortName) {
-    const requestOptions = {
-        method: 'GET',
-        cache: 'no-cache',
-        credentials: 'include',
-        headers:
-        {
-        "Content-Type": "application/json"
-        },
-    };
-    // Use the fetch function with the modified request options
-    fetch("http://localhost:8085/api/leaderboard/timefetch/" + sortName, requestOptions)
-       .then(response => {
-            if (!response.ok) {
-                throw Error('Network response was not ok');
-            }
-            return response.json();
-        })
-       .then(data => {
-            console.log(data);
-            oldTime = data.time;
-            return data;
-        })
-       .catch(error => {
-            console.log('There has been a problem with your fetch operation: ', error.message);
-        });
-}
-
-function updateTerms(sortName) {
-    const sortData = {
-        "time": "",
-        "terms": terms
-    };
-            console.log("updating terms for: " + sortName);
-            const requestOptions = {
-                method: 'POST',
-                cache: 'no-cache',
-                credentials: 'include',
-                 headers: 
-                 {
-                "Content-Type": "application/json"
-                },
-                body: JSON.stringify(sortData)
-            };
-        
-            // Use the fetch function with the modified request options
-            fetch("http://localhost:8085/api/leaderboard/updateterms/" + sortName, requestOptions)
-                .then(response => {
-                    if (!response.ok) {
-                        throw Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-
-                    console.log(data); // Log the fetched data to the console
-
-                })
-                .catch(error => {
-                    console.error('Fetch error:', error);
-                });
-}
-
-
 function main() {
     let list = createArray();
     let time;
@@ -180,63 +116,43 @@ function main() {
 
     // Checking which sort was chosen
     if (Insertion) {
-        time = InsertionSortTime(list);
-        console.log(time);
         if (list.length == 10000) {
+            insertionSortRequest();
             updateTime("insertion", time);
         }
+        else {
+            time = InsertionSortTime(list);
+            console.log(time);
+        }
     } else if (Merge) {
-        time = MergeSortTime(list);
-        console.log(time);
         if (list.length == 10000) {
+            mergeSortRequest();
             updateTime("merge", time);
         }
+        else {
+            time = MergeSortTime(list);
+            console.log(time);
+        }
     } else if (Bubble) {
-        time = BubbleSortTime(list);
-        console.log(time);
         if (list.length == 10000) {
-            updateTime("bubble sort", time);
+            bubbleSortRequest();
+            updateTime("bubble", time);
+        }
+        else {
+            time = BubbleSortTime(list);
+            console.log(time);
         }
     } else if (Selection) {
-        time = selectSortTime(list);
-        console.log(time);
         if (list.length == 10000) {
+            selectionSortRequest();
             updateTime("selection", time);
+        }
+        else {
+            time = SelectionSortTime(list);
+            console.log(time);
         }
     }
 }
-
-function updateTime(sortName, time) {
-    const sortData = {
-        "time": time,
-        "terms": ""
-    };
-    console.log("updating time for: " + sortName);
-    const requestOptions = {
-        method: 'POST',
-        cache: 'no-cache',
-        credentials: 'include',
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(sortData)
-    };
-    // Use the fetch function with the modified request options
-    fetch("http://localhost:8085/api/leaderboard/updatetime/" + sortName, requestOptions)
-        .then(response => {
-            if (!response.ok) {
-                throw Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log(data); // Log the fetched data to the console
-        })
-        .catch(error => {
-            console.error('Fetch error:', error);
-        });
-}
-
 
 function createArray() {
     let n = slider.value;
@@ -386,4 +302,52 @@ function InsertionSortTime(arr) {
     // Return the elapsed time
     timeText.innerHTML = elapsedTime + "ms";
     return elapsedTime;
+}
+
+function bubbleSortRequest() {
+    var requestOptions = {
+        method: 'POST',
+        redirect: 'follow'
+      };
+      
+      fetch("http://localhost:8085/api/sort/bubble", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+}
+
+function selectionSortRequest() {
+    var requestOptions = {
+        method: 'POST',
+        redirect: 'follow'
+      };
+      
+      fetch("http://localhost:8085/api/sort/selection", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+}
+
+function insertionSortRequest() {
+    var requestOptions = {
+        method: 'POST',
+        redirect: 'follow'
+      };
+      
+      fetch("http://localhost:8085/api/sort/insertion", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+}
+
+function mergeSortRequest() {
+    var requestOptions = {
+        method: 'POST',
+        redirect: 'follow'
+      };
+      
+      fetch("http://localhost:8085/api/sort/merge", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
 }

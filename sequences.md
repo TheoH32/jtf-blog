@@ -227,4 +227,4 @@ courses: { csa: {week: 0} }
     </tr>
   </tbody>
 </table>
-<script src="{{site.baseurl}}/assets/js/sequences.js"></script>
+<script src="https://theoh32.github.io/jtf-blog/assets/js/sequences.js"></script>
