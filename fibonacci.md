@@ -3,6 +3,7 @@ layout: post
 title: Fibonacci Sequence
 type: ccc
 courses: { csa: {week: 0} }
+permalink: /fib
 ---
 
 <style>
