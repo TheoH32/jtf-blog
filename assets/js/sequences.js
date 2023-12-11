@@ -47,6 +47,7 @@ function bubbleSortRequest() {
         .then(data => {
             const sortTime = data.sortTime; // Access the "sortTime" property of the parsed data
             console.log(`Sort time: ${sortTime}`);
+            timeText.innerHTML = sortTime + "ms";
         })
         .catch(error => console.error(error));
 }
@@ -62,6 +63,7 @@ function selectionSortRequest() {
         .then(data => {
             const sortTime = data.sortTime; // Access the "sortTime" property of the parsed data
             console.log(`Sort time: ${sortTime}`);
+            timeText.innerHTML = sortTime + "ms";
         })
         .catch(error => console.log('error', error));
 }
@@ -77,6 +79,7 @@ function insertionSortRequest() {
         .then(data => {
             const sortTime = data.sortTime; // Access the "sortTime" property of the parsed data
             console.log(`Sort time: ${sortTime}`);
+            timeText.innerHTML = sortTime + "ms";
         })
         .catch(error => console.log('error', error));
 }
@@ -92,6 +95,7 @@ function mergeSortRequest() {
         .then(data => {
             const sortTime = data.sortTime; // Access the "sortTime" property of the parsed data
             console.log(`Sort time: ${sortTime}`);
+            timeText.innerHTML = sortTime + "ms";
         })
         .catch(error => console.log('error', error));
 }
