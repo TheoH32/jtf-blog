@@ -48,6 +48,7 @@ function bubbleSortRequest() {
             const sortTime = data.sortTime; // Access the "sortTime" property of the parsed data
             console.log(`Sort time: ${sortTime}`);
             timeText.innerHTML = sortTime + "ms";
+            globalSortTime = sortTime;
         })
         .catch(error => console.error(error));
 }
@@ -64,6 +65,7 @@ function selectionSortRequest() {
             const sortTime = data.sortTime; // Access the "sortTime" property of the parsed data
             console.log(`Sort time: ${sortTime}`);
             timeText.innerHTML = sortTime + "ms";
+            globalSortTime = sortTime;
         })
         .catch(error => console.log('error', error));
 }
@@ -80,6 +82,7 @@ function insertionSortRequest() {
             const sortTime = data.sortTime; // Access the "sortTime" property of the parsed data
             console.log(`Sort time: ${sortTime}`);
             timeText.innerHTML = sortTime + "ms";
+            globalSortTime = sortTime;
         })
         .catch(error => console.log('error', error));
 }
@@ -96,6 +99,7 @@ function mergeSortRequest() {
             const sortTime = data.sortTime; // Access the "sortTime" property of the parsed data
             console.log(`Sort time: ${sortTime}`);
             timeText.innerHTML = sortTime + "ms";
+            globalSortTime = sortTime;
         })
         .catch(error => console.log('error', error));
 }
@@ -198,8 +202,7 @@ function getTime(sortName) {
 }
 
 
-
-
+let globalSortTime;
 function main() {
     let list = createArray();
     let time;
@@ -213,7 +216,7 @@ function main() {
     if (Insertion) {
         if (list.length == 10000) {
             insertionSortRequest();
-            updateTime("insertion", time);
+            updateTime("insertion", globalSortTime);
         }
         else {
             time = InsertionSortTime(list);
@@ -222,7 +225,7 @@ function main() {
     } else if (Merge) {
         if (list.length == 10000) {
             mergeSortRequest();
-            updateTime("merge", time);
+            updateTime("merge", globalSortTime);
         }
         else {
             time = MergeSortTime(list);
@@ -231,16 +234,16 @@ function main() {
     } else if (Bubble) {
         if (list.length == 10000) {
             bubbleSortRequest();
-            updateTime("bubble", time);
+            updateTime("bubble sort", globalSortTime);
         }
         else {
             time = BubbleSortTime(list);
-            console.log(time);
+            console.log(sortTime);
         }
     } else if (Selection) {
         if (list.length == 10000) {
             selectionSortRequest();
-            updateTime("selection", time);
+            updateTime("selection", globalSortTime);
         }
         else {
             time = SelectionSortTime(list);
@@ -249,9 +252,9 @@ function main() {
     }
 }
 
-function updateTime(sortName, time) {
+function updateTime(sortName, sortTime) {
     const sortData = {
-        "time": time,
+        "time": sortTime,
         "terms": ""
     };
     //if sortData[time] > oldTime {
