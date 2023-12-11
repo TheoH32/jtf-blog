@@ -213,7 +213,9 @@ function main() {
     if (Insertion) {
         if (list.length == 10000) {
             insertionSortRequest();
-            updateTime("insertion", globalSortTime);
+            setTimeout(function() {
+                updateTime("insertion", globalSortTime);
+            }, 1000);
         }
         else {
             time = InsertionSortTime(list);
@@ -222,7 +224,9 @@ function main() {
     } else if (Merge) {
         if (list.length == 10000) {
             mergeSortRequest();
-            updateTime("merge", globalSortTime);
+            setTimeout(function() {
+                updateTime("merge", globalSortTime);
+            }, 1000);
         }
         else {
             time = MergeSortTime(list);
@@ -231,7 +235,9 @@ function main() {
     } else if (Bubble) {
         if (list.length == 10000) {
             bubbleSortRequest();
-            updateTime("bubble sort", globalSortTime);
+            setTimeout(function() {
+                updateTime("bubble sort", globalSortTime);
+            }, 1000);
         }
         else {
             time = BubbleSortTime(list);
@@ -240,7 +246,9 @@ function main() {
     } else if (Selection) {
         if (list.length == 10000) {
             selectionSortRequest();
-            updateTime("selection", globalSortTime);
+            setTimeout(function() {
+                updateTime("selection", globalSortTime);
+            }, 1000);
         }
         else {
             time = SelectionSortTime(list);

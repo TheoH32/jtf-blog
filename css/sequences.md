@@ -231,7 +231,7 @@ courses: { csa: {week: 0} }
 
 ## leaderboard for different sorts, running at 10000 terms. 
 
-## NOTE: displays recent times and updates every 5 seconds
+## NOTE: displays recent times and updates every second
 
 <head>
 <link rel="stylesheet" href="/jtf-blog/css/sequences.css">
