@@ -1,0 +1,14 @@
+#sort-cards {
+  /* Add your desired styles here */
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  /* Add more styles as needed */
+  /* Add more styles for other elements as needed */ }
+  #sort-cards .card {
+    /* Add styles for individual cards if needed */
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd; }
+
+/*# sourceMappingURL=sequences.css.map */

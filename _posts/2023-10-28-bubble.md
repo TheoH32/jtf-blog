@@ -1,10 +1,11 @@
 ---
 layout: base
-title: Bubble Sort
 type: ccc
 permalink: /bubble
 courses: { csa: {week: 0} }
 ---
+
+<!-- Add title back if you want it back in header -->
 <div id="contain" class="sort-container"></div>
 <input id="terms" type="number" placeholder="# of Terms">
 <button onclick="createBars()">Create Bars</button>

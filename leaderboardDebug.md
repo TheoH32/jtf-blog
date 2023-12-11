@@ -1,6 +1,6 @@
 ---
 layout: post
-title: to be added
+title: To Be Added
 type: ccc
 courses: { csa: {week: 0} }
 ---
