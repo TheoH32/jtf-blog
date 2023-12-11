@@ -1,16 +1,44 @@
 #sort-cards {
-    /* Add your desired styles here */
     border: 1px solid #ccc;
-    padding: 10px;
-    margin: 10px;
-    /* Add more styles as needed */
-    
-    .card {
-        /* Add styles for individual cards if needed */
-        margin-bottom: 10px;
-        padding: 10px;
-        border: 1px solid #ddd;
-    }
+    padding: 20px; /* Increased padding for a more spacious feel */
+    margin: 20px;
+    border-radius: 8px; /* Rounded corners for a modern look */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle box shadow for depth */
 
-    /* Add more styles for other elements as needed */
+    .card {
+        margin-bottom: 15px; /* Slightly increased margin between cards */
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 6px; /* Rounded corners for cards */
+        transition: transform 0.3s ease-in-out; /* Smooth card hover effect */
+
+        &:hover {
+            transform: scale(1.02); /* Scale up on hover for a subtle interactive effect */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Enhance box shadow on hover */
+        }
+
+        h3 {
+            color: #aaaaaa; /* Darker text color for card headings */
+            margin-bottom: 8px;
+        }
+
+        p {
+            color: #414eff; /* Slightly muted text color for card content */
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 12px;
+            background-color: #4285f4; /* Google blue for a vibrant button color */
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: #3367d6; /* Darker blue on hover */
+            }
+        }
+    }
 }

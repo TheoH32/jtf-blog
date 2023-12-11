@@ -290,6 +290,6 @@ document.addEventListener("DOMContentLoaded", function () {
     display();
 
     // Refresh the data every 5 seconds (adjust as needed)
-    setInterval(display, 5000);
+    setInterval(display, 1000);
 });
 </script>

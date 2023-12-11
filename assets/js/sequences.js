@@ -199,7 +199,6 @@ function getTime(sortName) {
         });
 }
 
-
 let globalSortTime;
 function main() {
     let list = createArray();
