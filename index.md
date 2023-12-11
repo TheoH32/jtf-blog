@@ -1,8 +1,13 @@
 ---
-layout: home
+layout: base
 search_exclude: true
 ---
 
-JTF project blog. Learn all about java sorting!
+<style>
+</style>
 
-# Posts
+<h1 style="text-align: center;">Visualizing and Comparing Sorting Algorithms</h1>
+<div class="btn-div">
+    <a href="{{site.baseurl}}/sorts"><button class="btn-front">Sorting</button></a>
+    <a><button class="btn-front">Fibonacci</button></a>
+</div>

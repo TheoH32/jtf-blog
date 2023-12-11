@@ -3,6 +3,7 @@ layout: post
 title: Sequences
 type: ccc
 courses: { csa: {week: 0} }
+permalink: /sorts
 ---
 
 <style>

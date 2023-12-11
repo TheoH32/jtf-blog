@@ -47,3 +47,40 @@ input {
     font-size: 4rem !important;
     text-align: center !important;
 }
+
+.btn-div {
+    align-items: center;
+    text-align: center;
+    display: flex !important;
+    justify-content: center !important;
+}
+
+.btn-div a {
+    flex: 1 !important;
+    justify-content: center;
+    border-radius: 15px;
+    font-size: large;
+    padding: 20px; /* Adjust the padding to your preference */
+    margin: 5px; /* Add margin between buttons */
+    opacity: 0.8;
+    transition: all 0.3s ease-in;
+}
+
+.btn-front {
+    background-color: blue !important;
+    flex: 1 !important;
+    justify-content: center;
+    border-radius: 15px;
+    font-size: large;
+    padding: 20px; /* Adjust the padding to your preference */
+    margin: 5px; /* Add margin between buttons */
+    opacity: 0.8;
+    box-shadow: 2px 0px 10px rgb(255, 255, 255) !important;
+    border: 1px solid white !important; /* Fixed the border property */
+    transition: all 0.3s ease-in;
+}
+
+.btn-front:hover {
+    opacity: 1;
+}
+
