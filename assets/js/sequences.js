@@ -36,6 +36,54 @@ function leaderboardPlay() {
     termsText.innerHTML = 10000;
 }
 
+function bubbleSortRequest() {
+    var requestOptions = {
+        method: 'POST',
+        redirect: 'follow'
+    };
+    
+    fetch("http://localhost:8085/api/sort/bubble", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+}
+
+function selectionSortRequest() {
+    var requestOptions = {
+        method: 'POST',
+        redirect: 'follow'
+      };
+      
+      fetch("http://localhost:8085/api/sort/selection", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+}
+
+function insertionSortRequest() {
+    var requestOptions = {
+        method: 'POST',
+        redirect: 'follow'
+      };
+      
+      fetch("http://localhost:8085/api/sort/insertion", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+}
+
+function mergeSortRequest() {
+    var requestOptions = {
+        method: 'POST',
+        redirect: 'follow'
+      };
+      
+      fetch("http://localhost:8085/api/sort/merge", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+}
+
 function setManualValue() {
     var value = parseInt(manualInput.value);
     if (value >= parseInt(slider.min) && value <= parseInt(slider.max)) {
@@ -228,7 +276,7 @@ function createArray() {
     return array;
 }
 
-function selectSortTime(arr) {
+function SelectionSortTime(arr) {
     // Record the start time
     const startTime = Date.now();
 

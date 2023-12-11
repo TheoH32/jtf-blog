@@ -227,7 +227,7 @@ courses: { csa: {week: 0} }
     </tr>
   </tbody>
 </table>
-<script src="{{site.baseurl}}/assets/js/sequences.js"></script>
+<script src="/jtf-blog/assets/js/sequences.js"></script>
 
 ## leaderboard for different sorts, running at 10000 terms. 
 
