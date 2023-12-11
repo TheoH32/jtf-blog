@@ -43,20 +43,26 @@ function bubbleSortRequest() {
     };
     
     fetch("http://localhost:8085/api/sort/bubble", requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
+        .then(response => response.json()) // Change response.text() to response.json()
+        .then(data => {
+            const sortTime = data.sortTime; // Access the "sortTime" property of the parsed data
+            console.log(`Sort time: ${sortTime}`);
+        })
+        .catch(error => console.error(error));
 }
 
 function selectionSortRequest() {
     var requestOptions = {
         method: 'POST',
         redirect: 'follow'
-      };
-      
-      fetch("http://localhost:8085/api/sort/selection", requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
+        };
+
+        fetch("http://localhost:8085/api/sort/selection", requestOptions)
+        .then(response => response.json()) // Change response.text() to response.json()
+        .then(data => {
+            const sortTime = data.sortTime; // Access the "sortTime" property of the parsed data
+            console.log(`Sort time: ${sortTime}`);
+        })
         .catch(error => console.log('error', error));
 }
 
@@ -64,11 +70,14 @@ function insertionSortRequest() {
     var requestOptions = {
         method: 'POST',
         redirect: 'follow'
-      };
-      
-      fetch("http://localhost:8085/api/sort/insertion", requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
+        };
+
+        fetch("http://localhost:8085/api/sort/insertion", requestOptions)
+        .then(response => response.json()) // Change response.text() to response.json()
+        .then(data => {
+            const sortTime = data.sortTime; // Access the "sortTime" property of the parsed data
+            console.log(`Sort time: ${sortTime}`);
+        })
         .catch(error => console.log('error', error));
 }
 
@@ -76,11 +85,14 @@ function mergeSortRequest() {
     var requestOptions = {
         method: 'POST',
         redirect: 'follow'
-      };
-      
-      fetch("http://localhost:8085/api/sort/merge", requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
+    };
+
+    fetch("http://localhost:8085/api/sort/merge", requestOptions)
+        .then(response => response.json()) // Change response.text() to response.json()
+        .then(data => {
+            const sortTime = data.sortTime; // Access the "sortTime" property of the parsed data
+            console.log(`Sort time: ${sortTime}`);
+        })
         .catch(error => console.log('error', error));
 }
 
@@ -192,7 +204,6 @@ function main() {
         const j = Math.floor(Math.random() * (i + 1));
         [list[i], list[j]] = [list[j], list[i]];
     }
-    console.log(list);
 
     // Checking which sort was chosen
     if (Insertion) {
