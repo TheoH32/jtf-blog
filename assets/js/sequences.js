@@ -192,9 +192,7 @@ function getTime(sortName) {
         })
        .then(data => {
             console.log(data);
-            oldTime = data.time;
-            return data;
-            return oldTime;
+            return(data)
         })
        .catch(error => {
             console.log('There has been a problem with your fetch operation: ', error.message);
@@ -252,13 +250,14 @@ function main() {
     }
 }
 
-function updateTime(sortName, sortTime) {
+function updateTime(sortName, globalSortTime) {
     const sortData = {
-        "time": sortTime,
+        "time": globalSortTime,
         "terms": ""
     };
     //if sortData[time] > oldTime {
     console.log("updating time for: " + sortName);
+    console.log("time currently posted in db: " + globalSortTime);
     const requestOptions = {
         method: 'POST',
         cache: 'no-cache',
