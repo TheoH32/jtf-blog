@@ -172,6 +172,7 @@ document.getElementById("Merge").addEventListener("click", function () { btnSele
 document.getElementById("Bubble").addEventListener("click", function () { btnSelect("B"); });
 document.getElementById("Selection").addEventListener("click", function () { btnSelect("S"); });
 
+let oldTime;
 function getTime(sortName) {
     const requestOptions = {
         method: 'GET',
@@ -191,8 +192,15 @@ function getTime(sortName) {
             return response.json();
         })
        .then(data => {
-            console.log(data);
-            return(data)
+            const oldTime = data;
+            console.log("old Time: " + data);
+            console.log("old Time variable which is und for some reason: " + oldTime);
+            if (globalSortTime < oldTime) {
+                updateTime(sortName, globalSortTime);
+        }
+        else {
+            console.log("no change");
+        }
         })
        .catch(error => {
             console.log('There has been a problem with your fetch operation: ', error.message);
@@ -212,20 +220,20 @@ function main() {
     // Checking which sort was chosen
     if (Insertion) {
         if (list.length == 10000) {
-            insertionSortRequest();
+                insertionSortRequest();
             setTimeout(function() {
-                updateTime("insertion", globalSortTime);
+                getTime("insertion");
             }, 1000);
         }
         else {
             time = InsertionSortTime(list);
             console.log(time);
-        }
+        } 
     } else if (Merge) {
         if (list.length == 10000) {
             mergeSortRequest();
             setTimeout(function() {
-                updateTime("merge", globalSortTime);
+                getTime("merge"); 
             }, 1000);
         }
         else {
@@ -236,7 +244,7 @@ function main() {
         if (list.length == 10000) {
             bubbleSortRequest();
             setTimeout(function() {
-                updateTime("bubble sort", globalSortTime);
+                getTime("bubble sort"); 
             }, 1000);
         }
         else {
@@ -247,7 +255,7 @@ function main() {
         if (list.length == 10000) {
             selectionSortRequest();
             setTimeout(function() {
-                updateTime("selection", globalSortTime);
+                getTime("selection"); 
             }, 1000);
         }
         else {
