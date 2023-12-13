@@ -13,14 +13,7 @@
     padding: 15px;
     border: 1px solid #ddd;
     border-radius: 6px;
-    /* Rounded corners for cards */
-    transition: transform 0.3s ease-in-out;
-    /* Smooth card hover effect */ }
-    #sort-cards .card:hover {
-      transform: scale(1.02);
-      /* Scale up on hover for a subtle interactive effect */
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-      /* Enhance box shadow on hover */ }
+    /* Rounded corners for cards */ }
     #sort-cards .card h3 {
       color: #aaaaaa;
       /* Darker text color for card headings */
